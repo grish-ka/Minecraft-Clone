@@ -9,20 +9,23 @@ def main():
     canvas = Canvas(tk, width=500, height=500)
     canvas.pack()
 
-    def draw_cloumns(n: int = 16, width: float = 20, height: float = 400):
-        length = n * width
-        n=n+1
-        for x in range(n):
-            canvas.create_line(x*width, 500-height, x*width, height)
+    def draw_cloumns(size: int = 17, width: float = 20):
+        length: float = size * width
+        size = size + 1
+        for x in range(size):
+            canvas.create_line(x*width, 20, x*width, length)
 
-    def draw_rows(n: int = 16, height: float = 20,width: float = 20):
-        length=n*width
-        n=n+1
-        for y in range(n):
-            canvas.create_line(y*width, y*height, length, y*height)
+    def draw_rows(size: int = 17, height: float = 20, width: float = 20):
+        length: float = size * width
+        size = size + 1
+        for y in range(size):
+            canvas.create_line(width, y*height, length, y*height)
 
-    draw_cloumns()
-    draw_rows()
+
+    chunk_size = 17
+
+    draw_cloumns(chunk_size)
+    draw_rows(chunk_size)
 
     while True:
         tk.update()
