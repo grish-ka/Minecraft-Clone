@@ -4,6 +4,7 @@
 import random
 from tkinter import *
 
+import Player
 from CustomErrors import GridNotFound
 
 
@@ -11,7 +12,8 @@ class Block:
 
     block_ids = {
         "clone:dirt": "brown",
-        "clone:grass_block": "green"
+        "clone:grass_block": "green",
+        "clone:air": ""
     }
     xy={
         "0,0":[20,20],
@@ -23,6 +25,8 @@ class Block:
         block = Block.block_ids[block_id]
         xy: list = Block.xy[gridxy]
         canvas.create_rectangle(xy[0], xy[1], 39, 39, fill=block, outline=block)
+
+
 
 
 def main():
@@ -50,7 +54,8 @@ def main():
         raise GridNotFound.GridNotFound("Grid Not Found")
     draw_cloumns(chunk_size)
     draw_rows(chunk_size)
-    Block.draw_block(gridxy="1,0", block_id="clone:dirt", canvas=canvas)
+    Block.draw_block(gridxy="1,0", block_id="clone:grass_block", canvas=canvas)
+    Player.Player(canvas)
 
 
     while True:
