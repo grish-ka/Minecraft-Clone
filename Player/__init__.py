@@ -8,4 +8,4 @@ class Player:
 
     def move(self):
         self.mspeed=1
-        self.canvas.move()
+        canvas = self.canvas
