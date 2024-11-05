@@ -28,7 +28,6 @@ def main():
     chunk_size = 17
 
     n = random.randrange(0, 100000)
-    n = 100000
     if n == 100000:
         raise GridNotFound.GridNotFound("Grid Not Found")
     draw_cloumns(chunk_size)
