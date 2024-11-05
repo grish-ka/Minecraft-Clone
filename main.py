@@ -4,7 +4,7 @@
 import random
 from tkinter import *
 
-from Lib.GridNotFound import GridNotFound
+from CustomErrors import GridNotFound
 
 
 def main():
