@@ -1,7 +1,10 @@
 # This is a sample Python script.
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import random
 from tkinter import *
+
+from Lib.GridNotFound import GridNotFound
 
 
 def main():
@@ -24,8 +27,13 @@ def main():
 
     chunk_size = 17
 
+    n = random.randrange(0, 100000)
+    n = 100000
+    if n == 100000:
+        raise GridNotFound("Grid Not Found")
     draw_cloumns(chunk_size)
     draw_rows(chunk_size)
+
 
     while True:
         tk.update()
