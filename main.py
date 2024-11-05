@@ -30,7 +30,7 @@ def main():
     n = random.randrange(0, 100000)
     n = 100000
     if n == 100000:
-        raise GridNotFound("Grid Not Found")
+        raise GridNotFound.GridNotFound("Grid Not Found")
     draw_cloumns(chunk_size)
     draw_rows(chunk_size)
 
