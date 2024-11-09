@@ -4,9 +4,9 @@
 import random
 from tkinter import *
 
-import Player
 from CustomErrors import GridNotFound
 from Block import Block
+from Player import *
 
 
 
@@ -18,6 +18,7 @@ def main():
     tk = Tk()
     canvas = Canvas(tk, width=500, height=500)
     canvas.pack()
+    Block()
 
     def draw_cloumns(size: int = 17, width: float = 20):
         length: float = size * width
@@ -39,11 +40,13 @@ def main():
         raise GridNotFound.GridNotFound("Grid Not Found")
     draw_cloumns(chunk_size)
     draw_rows(chunk_size)
-    Block.draw_block(gridxy=[1,0], block_id="clone:grass_block", canvas=canvas)
-    Player.Player(canvas)
+    Block.draw_block(gridxy="1,0", block_id="clone:grass_block", canvas=canvas)
+    player = Player(canvas)
 
 
     while True:
+
+        player.draw(tk)
         tk.update()
 
 
