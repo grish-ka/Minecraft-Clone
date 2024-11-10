@@ -41,13 +41,12 @@ def main():
         raise GridNotFound.GridNotFound("Grid Not Found")
     draw_columns(chunk_size)
     draw_rows(chunk_size)
-    Block.draw_block(x=0, y=1, block_id="clone:grass_block", canvas=canvas)
-    # player = Player(canvas)
+    player = Player(canvas)
 
 
     while True:
 
-        # player.draw(tk)
+        player.draw(tk)
         tk.update()
 
 
