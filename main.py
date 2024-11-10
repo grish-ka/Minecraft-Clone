@@ -4,6 +4,7 @@
 import random
 from tkinter import *
 
+from Grid import *
 from CustomErrors import GridNotFound
 from Block import Block
 from Player import *
@@ -21,26 +22,26 @@ def main():
     canvas.pack()
     Block.draw_blocks(Block, canvas)
 
-    def draw_columns(size: int = 17, width: float = 20):
+
+    def draw_columns(canvas, size: int = 17, width: float = 20):
         length: float = size * width
         size = size + 1
         for x in range(size):
-            canvas.create_line(x*width, 20, x*width, length)
+            canvas.create_line(x * width, 20, x * width, length)
 
-    def draw_rows(size: int = 17, height: float = 20, width: float = 20):
+    def draw_rows(canvas, size: int = 17, height: float = 20, width: float = 20):
         length: float = size * width
         size = size + 1
         for y in range(size):
-            canvas.create_line(width, y*height, length, y*height)
-
+            canvas.create_line(width, y * height, length, y * height)
 
     chunk_size = 4
 
     n = random.randrange(0, 100000)
     if n == 100000:
         raise GridNotFound.GridNotFound("Grid Not Found")
-    draw_columns(chunk_size)
-    draw_rows(chunk_size)
+    draw_columns(canvas=canvas, size=chunk_size)
+    draw_rows(canvas=canvas, size=chunk_size)
     player = Player(canvas)
 
 

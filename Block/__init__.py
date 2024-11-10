@@ -1,5 +1,8 @@
 from tkinter import *
 
+import Grid
+
+
 class Block:
     def convert_coords_to_str(self, coords: list) -> str:
         return str(str(coords[0]) + "," + str(coords[1]))
@@ -38,3 +41,4 @@ class Block:
             for y in range(len(self.blocks[x])):
                 print(self.blocks[x][y], "at", x, y)
                 self.draw_block(x, y, self.blocks[x][y], canvas)
+                Grid.Grid.draw_grid(self=Grid.Grid, canvas=canvas, size=4)

@@ -11,8 +11,7 @@ class Player:
 
     def move_left(self):
         print("Pressed enter")
-
-        Block.draw_block(x=self.coords[0], y=self.coords[1], block_id="clone:air", canvas=self.canvas)
+        Block.draw_blocks(Block, self.canvas)
         self.coords=[self.coords[0]+1, self.coords[1]]
         self.draw_player(self.coords[0], self.coords[1])
 
@@ -35,7 +34,7 @@ class Player:
                                                                        fill="blue", outline="blue")
 
     def move_down(self):
-        Block.draw_block(x=self.coords[0], y=self.coords[1], block_id="clone:air", canvas=self.canvas)
+        Block.draw_blocks(Block, self.canvas)
         self.coords = [self.coords[0], self.coords[1] + 1]
         self.draw_player(self.coords[0], self.coords[1])
 
@@ -43,11 +42,11 @@ class Player:
         self.move(root)
 
     def move_right(self):
-        Block.draw_block(x=self.coords[0], y=self.coords[1], block_id="clone:air", canvas=self.canvas)
+        Block.draw_blocks(Block, self.canvas)
         self.coords = [self.coords[0]-1, self.coords[1]]
         self.draw_player(self.coords[0], self.coords[1])
 
     def move_up(self):
-        Block.draw_block(x=self.coords[0], y=self.coords[1], block_id="clone:air", canvas=self.canvas)
+        Block.draw_blocks(Block, self.canvas)
         self.coords = [self.coords[0], self.coords[1]-1]
         self.draw_player(self.coords[0], self.coords[1])
