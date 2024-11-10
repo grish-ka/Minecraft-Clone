@@ -16,11 +16,12 @@ from Player import *
 
 def main():
     tk = Tk()
+    tk.title("Minecraft clone 0.1")
     canvas = Canvas(tk, width=500, height=500)
     canvas.pack()
-    Block()
+    Block.draw_blocks(Block, canvas)
 
-    def draw_cloumns(size: int = 17, width: float = 20):
+    def draw_columns(size: int = 17, width: float = 20):
         length: float = size * width
         size = size + 1
         for x in range(size):
@@ -33,20 +34,20 @@ def main():
             canvas.create_line(width, y*height, length, y*height)
 
 
-    chunk_size = 17
+    chunk_size = 4
 
     n = random.randrange(0, 100000)
     if n == 100000:
         raise GridNotFound.GridNotFound("Grid Not Found")
-    draw_cloumns(chunk_size)
+    draw_columns(chunk_size)
     draw_rows(chunk_size)
-    Block.draw_block(gridxy="1,0", block_id="clone:grass_block", canvas=canvas)
-    player = Player(canvas)
+    Block.draw_block(x=0, y=1, block_id="clone:grass_block", canvas=canvas)
+    # player = Player(canvas)
 
 
     while True:
 
-        player.draw(tk)
+        # player.draw(tk)
         tk.update()
 
 

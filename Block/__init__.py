@@ -10,38 +10,36 @@ class Block:
         "clone:grass_block": "green",
         "clone:air": "white"
     }
-    xy={
-        "0,0":[20,20],
-        "0,1":[20,60],
-        "1,0":[60,20],
-        "1,1": [60, 20],
-        "2,1": [60, 20],
-        "2,2": [60, 20],
-        "2,3": [60, 20],
-        "2,4": [60, 20],
-        "2,5": [60, 20],
-        "2,6": [60, 20],
-        "2,8": [60, 20],
-        "2,9": [60, 20],
-        "2,10": [60, 20],
-        "2,11": [60, 20],
-        "2,12": [60, 20],
-        "2,13": [60, 20],
-        "2,14": [60, 20],
-        "2,15": [60, 20],
-        "2,16": [60, 20]
 
-    }
+    def get_xy( x, y):
+        start_x = 20
+        start_y = 20
+        width = 20
+        return x * width + start_x, y * width + start_y
 
-    def __init__(self):
-        for colum in range(16, 2):
-            for row in range(16, 0):
-                self.xy[self.convert_coords_to_str([colum, row])] = [60, 20]
-                print(self.convert_coords_to_str([colum, row]))
+    def decon_xy(x, y):
+        start_x = 20
+        start_y = 20
+        width = 20
+        return x * width + start_x, y * width + start_y
 
-        print(self.xy)
 
-    def draw_block(gridxy: str, block_id: str, canvas: Canvas):
+
+    blocks = [
+        ["clone:dirt", "clone:grass_block", "clone:dirt"],
+        ["clone:dirt", "clone:dirt", "clone:dirt"],
+        ["clone:dirt", "clone:dirt", "clone:dirt"]
+    ]
+
+    def draw_block( x: int, y: int, block_id: str, canvas: Canvas):
         block = Block.block_ids[block_id]
-        xy: list = Block.xy[gridxy]
+        xy: tuple = Block.get_xy(x=x, y=y)
         canvas.create_rectangle(xy[0], xy[1], 39, 39, fill=block, outline=block)
+
+    def draw_blocks(self, canvas: Canvas):
+        for x in range(len(self.blocks)):
+            for y in range(len(self.blocks)):
+                print(self.blocks[x][y], "at", x, y)
+                self.draw_block(x=x, y=y, block_id=self.blocks[x][y], canvas=canvas)
+
+
